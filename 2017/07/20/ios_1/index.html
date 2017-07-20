@@ -3,19 +3,16 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Round D Problem A. Go Sightseeing | Alison&#39;s Space</title>
+    <title>IOS基础 | Alison&#39;s Space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="ProblemWhen you travel, you like to spend time sightseeing in as many cities as possible, but sometimes you might not be able to because you need to catch the bus to the next city. To maximize your tr">
-<meta name="keywords" content="dp">
+    <meta name="keywords" content="IOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Round D Problem A. Go Sightseeing">
-<meta property="og:url" content="http://yoursite.com/2017/07/20/kk_d_a/index.html">
+<meta property="og:title" content="IOS基础">
+<meta property="og:url" content="http://yoursite.com/2017/07/20/ios_1/index.html">
 <meta property="og:site_name" content="Alison&#39;s Space">
-<meta property="og:description" content="ProblemWhen you travel, you like to spend time sightseeing in as many cities as possible, but sometimes you might not be able to because you need to catch the bus to the next city. To maximize your tr">
-<meta property="og:updated_time" content="2017-07-20T02:24:11.595Z">
+<meta property="og:updated_time" content="2017-07-20T06:52:09.139Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Round D Problem A. Go Sightseeing">
-<meta name="twitter:description" content="ProblemWhen you travel, you like to spend time sightseeing in as many cities as possible, but sometimes you might not be able to because you need to catch the bus to the next city. To maximize your tr">
+<meta name="twitter:title" content="IOS基础">
     
 
     
@@ -195,7 +192,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-kk_d_a" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-ios_1" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -203,7 +200,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Round D Problem A. Go Sightseeing
+            IOS基础
         </h1>
     
 
@@ -212,8 +209,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/20/kk_d_a/">
-            <time datetime="2017-07-20T01:57:33.331Z" itemprop="datePublished">2017-07-20</time>
+        <a href="/2017/07/20/ios_1/">
+            <time datetime="2017-07-20T06:52:08.484Z" itemprop="datePublished">2017-07-20</time>
         </a>
     </div>
 
@@ -221,13 +218,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Kickstart/">Kickstart</a>
+        <a class="article-category-link" href="/categories/IOS/">IOS</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dp/">dp</a>
+        <a class="tag-link" href="/tags/IOS/">IOS</a>
     </div>
 
                     </div>
@@ -238,20 +235,7 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>When you travel, you like to spend time sightseeing in as many cities as possible, but sometimes you might not be able to because you need to catch the bus to the next city. To maximize your travel enjoyment, you decide to write a program to optimize your schedule.</p>
-<p>You begin at city 1 at time 0 and plan to travel to cities 2 to N in ascending order, visiting every city. There is a bus service from every city i to the next city i + 1. The i-th bus service runs on a schedule that is specified by 3 integers: Si, Fi and Di, the start time, frequency and ride duration. Formally, this means that there is a bus leaving from city i at all times Si + xFi, where x is an integer and x ≥ 0, and the bus takes Di time to reach city i + 1.</p>
-<p>At each city between 1 and N - 1, inclusive, you can decide to spend Ts time sightseeing before waiting for the next bus, or you can immediately wait for the next bus. You cannot go sightseeing multiple times in the same city. You may assume that boarding and leaving buses takes no time. You must arrive at city N by time Tf at the latest. (Note that you cannot go sightseeing in city N, even if you arrive early. There’s nothing to see there!)</p>
-<p>What is the maximum number of cities you can go sightseeing in?</p>
-<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The input starts with one line containing one integer T, which is the number of test cases. T test cases follow.</p>
-<p>Each test case begins with a line containing 3 integers, N, Ts and Tf, representing the number of cities, the time taken for sightseeing in any city, and the latest time you can arrive in city N.</p>
-<p>This is followed by N - 1 lines. On the i-th line, there are 3 integers, Si, Fi and Di, indicating the start time, frequency, and duration of buses travelling from city i to city i + 1.</p>
-<p>Output</p>
-<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the maximum number of cities you can go sightseeing in such that you can still arrive at city N by time Tf at the latest. If it is impossible to arrive at city N by time Tf, output Case #x: IMPOSSIBLE.</p>
-<h3 id="Limits"><a href="#Limits" class="headerlink" title="Limits"></a>Limits</h3><p>1 ≤ T ≤ 100.<br>Small dataset</p>
-<p>2 ≤ N ≤ 16.<br>1 ≤ Si ≤ 5000.<br>1 ≤ Fi ≤ 5000.<br>1 ≤ Di ≤ 5000.<br>1 ≤ Ts ≤ 5000.<br>1 ≤ Tf ≤ 5000.<br>Large dataset</p>
-<p>2 ≤ N ≤ 2000.<br>1 ≤ Si ≤ 109.<br>1 ≤ Fi ≤ 109.<br>1 ≤ Di ≤ 109.<br>1 ≤ Ts ≤ 109.<br>1 ≤ Tf ≤ 109.</p>
-<h3 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Input </div><div class="line"> 	</div><div class="line">4</div><div class="line">4 3 12</div><div class="line">3 2 1</div><div class="line">6 2 2</div><div class="line">1 3 2</div><div class="line">3 2 30</div><div class="line">1 2 27</div><div class="line">3 2 1</div><div class="line">4 1 11</div><div class="line">2 1 2</div><div class="line">4 1 5</div><div class="line">8 2 2</div><div class="line">5 10 5000</div><div class="line">14 27 31</div><div class="line">27 11 44</div><div class="line">30 8 20</div><div class="line">2000 4000 3</div><div class="line"></div><div class="line">Output</div><div class="line">Case #1: 2</div><div class="line">Case #2: 0</div><div class="line">Case #3: IMPOSSIBLE</div><div class="line">Case #4: 4</div></pre></td></tr></table></figure>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3>
+            
         
         </div>
         <footer class="article-footer">
@@ -261,7 +245,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/20/kk_d_a/" data-id="cj5btco810000ikvq1l9bc5vf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/20/ios_1/" data-id="cj5c4gxs40000mkvqzk0ukjbx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -336,19 +320,19 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/07/20/paper_1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/07/20/jzoffer_1/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    入门一
+                    (no title)
                 
             </div>
         </a>
     
     
-        <a href="/2017/07/20/daiyuesuibi/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/07/20/honor_1/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">待月随笔</div>
+            <div class="article-nav-title">七月中旬随笔</div>
         </a>
     
 </nav>
