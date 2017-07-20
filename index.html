@@ -307,8 +307,6 @@ ga('send', 'pageview');
 
             
     
-        <a href="http://yoursite.com/2017/07/20/honor_1/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/20/honor_1/">评论</a>
-    
 
         </footer>
     </div>
@@ -439,8 +437,6 @@ ga('send', 'pageview');
 
             
     
-        <a href="http://yoursite.com/2017/07/20/LC_10/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/20/LC_10/">评论</a>
-    
 
         </footer>
     </div>
@@ -565,8 +561,6 @@ ga('send', 'pageview');
 
             
     
-        <a href="http://yoursite.com/2017/07/20/jzoffer_2/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/20/jzoffer_2/">评论</a>
-    
 
         </footer>
     </div>
@@ -690,8 +684,6 @@ ga('send', 'pageview');
 </script>
 
             
-    
-        <a href="http://yoursite.com/2017/07/20/paper_1/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/20/paper_1/">评论</a>
     
 
         </footer>
@@ -835,8 +827,6 @@ ga('send', 'pageview');
 
             
     
-        <a href="http://yoursite.com/2017/07/20/kk_d_a/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/20/kk_d_a/">评论</a>
-    
 
         </footer>
     </div>
@@ -965,8 +955,6 @@ ga('send', 'pageview');
 </script>
 
             
-    
-        <a href="http://yoursite.com/2017/07/20/daiyuesuibi/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/20/daiyuesuibi/">评论</a>
     
 
         </footer>
@@ -1098,8 +1086,6 @@ ga('send', 'pageview');
 </script>
 
             
-    
-        <a href="http://yoursite.com/2017/07/20/poj_3258/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/07/20/poj_3258/">评论</a>
     
 
         </footer>
@@ -1236,19 +1222,20 @@ ga('send', 'pageview');
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-        this.page.identifier = 'undefined';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus#alphauma-space-1' + '.disqus.com/count.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'AlphaUMa',
+			repo: 'AlphaUma.github.io',
+			oauth: {
+				client_id: '88686e2c3af6c10c9672',
+				client_secret: '26a67ff7928cd7a19ad3eeda713fe2822c2ec2c4',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 

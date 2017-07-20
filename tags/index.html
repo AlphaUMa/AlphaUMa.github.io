@@ -328,21 +328,20 @@ ga('send', 'pageview');
 </footer>
         
     
-    <script>
-    var disqus_config = function () {
-        
-            this.page.url = 'http://yoursite.com/tags/index.html';
-        
-        this.page.identifier = 'undefined';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus#alphauma-space-1' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'AlphaUMa',
+			repo: 'AlphaUma.github.io',
+			oauth: {
+				client_id: '88686e2c3af6c10c9672',
+				client_secret: '26a67ff7928cd7a19ad3eeda713fe2822c2ec2c4',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
 
 
 
