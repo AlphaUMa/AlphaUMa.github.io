@@ -3,14 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>分类: IOS | Alison&#39;s Space</title>
+    <title>从尾到头打印链表 | Alison&#39;s Space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Alison&#39;s Space">
-<meta property="og:url" content="http://yoursite.com/categories/IOS/index.html">
+    <meta name="description" content="题目描述请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。 Solution 1 Stack1234567891011121314151617import java.util.*;import java.util.ArrayList;public class Solution &amp;#123;">
+<meta name="keywords" content="list">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从尾到头打印链表">
+<meta property="og:url" content="http://yoursite.com/2017/07/20/jzoffer_3/index.html">
 <meta property="og:site_name" content="Alison&#39;s Space">
+<meta property="og:description" content="题目描述请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。 Solution 1 Stack1234567891011121314151617import java.util.*;import java.util.ArrayList;public class Solution &amp;#123;">
+<meta property="og:updated_time" content="2017-07-20T08:10:46.310Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alison&#39;s Space">
+<meta name="twitter:title" content="从尾到头打印链表">
+<meta name="twitter:description" content="题目描述请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。 Solution 1 Stack1234567891011121314151617import java.util.*;import java.util.ArrayList;public class Solution &amp;#123;">
     
 
     
@@ -190,50 +195,156 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-folder"></i></span>
-        <h1 class="title">IOS</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-jzoffer_3" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/07/20/ios_1/">IOS基础</a>
+        <h1 class="article-title" itemprop="name">
+            从尾到头打印链表
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/20/ios_1/">
-            <time datetime="2017-07-20T06:52:08.484Z" itemprop="datePublished">2017-07-20</time>
+        <a href="/2017/07/20/jzoffer_3/">
+            <time datetime="2017-07-20T08:10:45.669Z" itemprop="datePublished">2017-07-20</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/IOS/">IOS</a>
+        <a class="article-category-link" href="/categories/剑指Offer/">剑指Offer</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/IOS/">IOS</a>
+        <a class="tag-link" href="/tags/list/">list</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
+<h1 id="Solution-1-Stack"><a href="#Solution-1-Stack" class="headerlink" title="Solution 1 Stack"></a>Solution 1 Stack</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</div><div class="line">        Stack s=<span class="keyword">new</span> Stack();</div><div class="line">        ListNode cur=listNode;</div><div class="line">        <span class="keyword">while</span>(cur!=<span class="keyword">null</span>)&#123;</div><div class="line">            s.push(cur.val);</div><div class="line">            cur=cur.next;</div><div class="line">        &#125;</div><div class="line">        ArrayList&lt;Integer&gt; res=<span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">while</span>(!s.isEmpty())&#123;</div><div class="line">            res.add((<span class="keyword">int</span>)s.pop());</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;   </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Soluton-2-Recursion"><a href="#Soluton-2-Recursion" class="headerlink" title="Soluton 2 Recursion"></a>Soluton 2 Recursion</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</div><div class="line">        ArrayList&lt;Integer&gt; res=<span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span>(listNode ==<span class="keyword">null</span>)<span class="keyword">return</span> res;</div><div class="line">        ListNode p=listNode;</div><div class="line">        <span class="keyword">if</span>(p.next!= <span class="keyword">null</span>)</div><div class="line">            res=printListFromTailToHead(p.next);</div><div class="line">        res.add(p.val);    </div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://yoursite.com/2017/07/20/jzoffer_3/" data-id="cj5c5qcfc0000zkvqyapp32dd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/07/20/jzoffer_1/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">二维数组中的查找</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
 </section>
             
                 
