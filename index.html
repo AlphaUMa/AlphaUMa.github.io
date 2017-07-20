@@ -162,11 +162,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                10
+                11
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                9
+                11
                 <span>标签</span>
             </div>
         </div>
@@ -191,6 +191,136 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-jzoffer_4" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/20/jzoffer_4/">重建二叉树</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/20/jzoffer_4/">
+            <time datetime="2017-07-20T08:45:12.987Z" itemprop="datePublished">2017-07-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/剑指Offer/">剑指Offer</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/binary-tree/">binary tree</a>, <a class="tag-link" href="/tags/tree/">tree</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>题目描述<br>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。<br>其实就是LC105. Construct Binary Tree from Preorder and Inorder Traversal</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">reConstructBinaryTree</span><span class="params">(<span class="keyword">int</span> [] pre,<span class="keyword">int</span> [] in)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> build(pre,<span class="number">0</span>,pre.length-<span class="number">1</span>,in,<span class="number">0</span>,in.length-<span class="number">1</span>);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function">TreeNode <span class="title">build</span><span class="params">(<span class="keyword">int</span> [] pre,<span class="keyword">int</span> ps,<span class="keyword">int</span> pe,<span class="keyword">int</span> [] in,<span class="keyword">int</span> is ,<span class="keyword">int</span> ie)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(ps&gt;pe||is&gt;ie || pe&gt;=pre.length || ie&gt;=in.length)<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">int</span> r=<span class="number">0</span>;<span class="comment">//index of root in in[]</span></div><div class="line">        <span class="comment">//find root</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=is;i&lt;=ie;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(in[i]==pre[ps])&#123;</div><div class="line">                r=i;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> d=r-is;<span class="comment">// length of left part</span></div><div class="line">        TreeNode root=<span class="keyword">new</span> TreeNode(in[r]);</div><div class="line">        root.left=build(pre,ps+<span class="number">1</span>,ps+d,in,is,r-<span class="number">1</span>);</div><div class="line">        root.right=build(pre,ps+d+<span class="number">1</span>,pe,in,r+<span class="number">1</span>,ie);</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/07/20/jzoffer_4/" data-id="cj5c6yrht0000vkvqcfp0mw8u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-jzoffer_3" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1360,136 +1490,9 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-poj_3258" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/07/20/poj_3258/">POJ 3258 River Hopscotch</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/07/20/poj_3258/">
-            <time datetime="2017-07-19T17:12:07.315Z" itemprop="datePublished">2017-07-20</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/POJ/">POJ</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/二分法/">二分法</a>, <a class="tag-link" href="/tags/最大化最小值/">最大化最小值</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p><a href="http://poj.org/problem?id=3258" target="_blank" rel="external">POJ 3258: River Hopscotch</a><br>从N块石头中移除M块，使得间距最小值最大。</p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">//const int INF = 1000000010;</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n, l, m;</div><div class="line"><span class="keyword">int</span> d[<span class="number">50010</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> last = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n - m; i++) &#123;</div><div class="line">		<span class="keyword">int</span> cur = last + <span class="number">1</span>;</div><div class="line">		<span class="keyword">while</span> (cur &lt; n &amp;&amp; d[cur] - d[last] &lt; x) &#123;</div><div class="line">			cur++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (cur == n )<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		last = cur;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</div><div class="line">	sort(d, d + n );</div><div class="line">	<span class="keyword">int</span> lb = <span class="number">0</span>, ub = l + <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (ub - lb &gt; <span class="number">1</span>) &#123;</div><div class="line">		<span class="keyword">int</span> mid = lb + ((ub - lb) &gt;&gt; <span class="number">1</span>);</div><div class="line">		<span class="keyword">if</span> (C(mid))</div><div class="line">			lb = mid;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			ub = mid;</div><div class="line">		<span class="comment">//cout &lt;&lt; "lb= " &lt;&lt; lb &lt;&lt; " ub=" &lt;&lt; ub &lt;&lt; endl;</span></div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; lb &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="comment">//freopen("in.txt",  "r", stdin);</span></div><div class="line">	<span class="built_in">cin</span> &gt;&gt; l &gt;&gt; n &gt;&gt; m;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; d[i];</div><div class="line">	&#125;</div><div class="line">	d[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">//起点</span></div><div class="line">	d[n + <span class="number">1</span>] = l; <span class="comment">//终点</span></div><div class="line">	n++;</div><div class="line">	n++;</div><div class="line">	solve();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/07/20/poj_3258/" data-id="cj5btb8fy0006wkvqk45ii3c8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
+    <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    </nav>
 </section>
             
                 
@@ -1500,6 +1503,15 @@ ga('send', 'pageview');
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/剑指Offer/">剑指Offer</a></p>
+                            <p class="item-title"><a href="/2017/07/20/jzoffer_4/" class="title">重建二叉树</a></p>
+                            <p class="item-date"><time datetime="2017-07-20T08:45:12.987Z" itemprop="datePublished">2017-07-20</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1537,15 +1549,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/LeetCode/">LeetCode</a></p>
-                            <p class="item-title"><a href="/2017/07/20/LC_10/" class="title">10. Regular Expression Matching</a></p>
-                            <p class="item-date"><time datetime="2017-07-20T02:17:22.603Z" itemprop="datePublished">2017-07-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1555,7 +1558,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IOS/">IOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kickstart/">Kickstart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/POJ/">POJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/农药/">农药</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/剑指Offer/">剑指Offer</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图像理解/">图像理解</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/广播剧/">广播剧</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IOS/">IOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kickstart/">Kickstart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/POJ/">POJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/农药/">农药</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/剑指Offer/">剑指Offer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图像理解/">图像理解</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/广播剧/">广播剧</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1564,7 +1567,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">10</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -1573,7 +1576,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人YY/">个人YY</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最大化最小值/">最大化最小值</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IOS/">IOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/list/">list</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人YY/">个人YY</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最大化最小值/">最大化最小值</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1582,7 +1585,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/IOS/" style="font-size: 10px;">IOS</a> <a href="/tags/dp/" style="font-size: 20px;">dp</a> <a href="/tags/list/" style="font-size: 10px;">list</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/个人YY/" style="font-size: 10px;">个人YY</a> <a href="/tags/二分法/" style="font-size: 10px;">二分法</a> <a href="/tags/最大化最小值/" style="font-size: 10px;">最大化最小值</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a>
+            <a href="/tags/IOS/" style="font-size: 10px;">IOS</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/dp/" style="font-size: 20px;">dp</a> <a href="/tags/list/" style="font-size: 10px;">list</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/个人YY/" style="font-size: 10px;">个人YY</a> <a href="/tags/二分法/" style="font-size: 10px;">二分法</a> <a href="/tags/最大化最小值/" style="font-size: 10px;">最大化最小值</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a>
         </div>
     </div>
 

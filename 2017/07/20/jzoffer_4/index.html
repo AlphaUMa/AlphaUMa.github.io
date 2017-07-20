@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>10. Regular Expression Matching | Alison&#39;s Space</title>
+    <title>重建二叉树 | Alison&#39;s Space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="ProblemImplement regular expression matching with support for &amp;#39;.&amp;#39; and &amp;#39;*&amp;#39;.​12345678910111213141516​&apos;.&apos; Matches any single character.&apos;*&apos; Matches zero or more of the preceding element.Th">
-<meta name="keywords" content="dp">
+    <meta name="description" content="题目描述题目描述输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。其实就是LC105. Construct Binary Tree from Preorder and Inorder Traversal Solut">
+<meta name="keywords" content="tree,binary tree">
 <meta property="og:type" content="article">
-<meta property="og:title" content="10. Regular Expression Matching">
-<meta property="og:url" content="http://yoursite.com/2017/07/20/LC_10/index.html">
+<meta property="og:title" content="重建二叉树">
+<meta property="og:url" content="http://yoursite.com/2017/07/20/jzoffer_4/index.html">
 <meta property="og:site_name" content="Alison&#39;s Space">
-<meta property="og:description" content="ProblemImplement regular expression matching with support for &amp;#39;.&amp;#39; and &amp;#39;*&amp;#39;.​12345678910111213141516​&apos;.&apos; Matches any single character.&apos;*&apos; Matches zero or more of the preceding element.Th">
-<meta property="og:updated_time" content="2017-07-20T05:19:05.293Z">
+<meta property="og:description" content="题目描述题目描述输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。其实就是LC105. Construct Binary Tree from Preorder and Inorder Traversal Solut">
+<meta property="og:updated_time" content="2017-07-20T08:45:18.428Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="10. Regular Expression Matching">
-<meta name="twitter:description" content="ProblemImplement regular expression matching with support for &amp;#39;.&amp;#39; and &amp;#39;*&amp;#39;.​12345678910111213141516​&apos;.&apos; Matches any single character.&apos;*&apos; Matches zero or more of the preceding element.Th">
+<meta name="twitter:title" content="重建二叉树">
+<meta name="twitter:description" content="题目描述题目描述输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。其实就是LC105. Construct Binary Tree from Preorder and Inorder Traversal Solut">
     
 
     
@@ -195,7 +195,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-LC_10" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-jzoffer_4" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -203,7 +203,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            10. Regular Expression Matching
+            重建二叉树
         </h1>
     
 
@@ -212,8 +212,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/20/LC_10/">
-            <time datetime="2017-07-20T02:17:22.603Z" itemprop="datePublished">2017-07-20</time>
+        <a href="/2017/07/20/jzoffer_4/">
+            <time datetime="2017-07-20T08:45:12.987Z" itemprop="datePublished">2017-07-20</time>
         </a>
     </div>
 
@@ -221,13 +221,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+        <a class="article-category-link" href="/categories/剑指Offer/">剑指Offer</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dp/">dp</a>
+        <a class="tag-link" href="/tags/binary-tree/">binary tree</a>, <a class="tag-link" href="/tags/tree/">tree</a>
     </div>
 
                     </div>
@@ -238,8 +238,8 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Implement regular expression matching with support for <code>&#39;.&#39;</code> and <code>&#39;*&#39;</code>.<br>​<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">​<span class="string">'.'</span> Matches any single character.</div><div class="line"><span class="string">'*'</span> Matches zero <span class="built_in">or</span> more of the preceding element.</div><div class="line"></div><div class="line">The matching should cover the entire input string (<span class="built_in">not</span> partial).</div><div class="line"></div><div class="line">The function prototype should be:</div><div class="line">bool isMatch(const char *s, const char *p)</div><div class="line"></div><div class="line">Some examples:</div><div class="line">isMatch(<span class="string">"aa"</span>,<span class="string">"a"</span>) → <span class="literal">false</span></div><div class="line">isMatch(<span class="string">"aa"</span>,<span class="string">"aa"</span>) → <span class="literal">true</span></div><div class="line">isMatch(<span class="string">"aaa"</span>,<span class="string">"aa"</span>) → <span class="literal">false</span></div><div class="line">isMatch(<span class="string">"aa"</span>, <span class="string">"a*"</span>) → <span class="literal">true</span></div><div class="line">isMatch(<span class="string">"aa"</span>, <span class="string">".*"</span>) → <span class="literal">true</span></div><div class="line">isMatch(<span class="string">"ab"</span>, <span class="string">".*"</span>) → <span class="literal">true</span></div><div class="line">isMatch(<span class="string">"aab"</span>, <span class="string">"c*a*b"</span>) → <span class="literal">true</span></div></pre></td></tr></table></figure></p>
-<h3 id="My-Solution"><a href="#My-Solution" class="headerlink" title="My Solution"></a>My Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> m = s.length(), n = p.length();</div><div class="line">	<span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</div><div class="line">	dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">2</span>; j &lt;= n; j++) &#123;</div><div class="line">		<span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'*'</span>)</div><div class="line">			dp[<span class="number">0</span>][j] = dp[<span class="number">0</span>][j - <span class="number">2</span>];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</div><div class="line">			<span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'*'</span>)</div><div class="line">				dp[i][j] = dp[i][j - <span class="number">1</span>]</div><div class="line">					|| (j &gt;= <span class="number">2</span> &amp;&amp; dp[i - <span class="number">1</span>][j]</div><div class="line">					&amp;&amp; (s.charAt(i - <span class="number">1</span>) == p.charAt(j - <span class="number">2</span>) </div><div class="line">					|| p.charAt(j - <span class="number">2</span>) == <span class="string">'.'</span>))</div><div class="line">					|| (j &gt; <span class="number">2</span> &amp;&amp; dp[i][j - <span class="number">2</span>]);</div><div class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'.'</span> </div><div class="line">				|| p.charAt(j - <span class="number">1</span>) == s.charAt(i - <span class="number">1</span>))</div><div class="line">					dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> dp[m][n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>题目描述<br>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。<br>其实就是LC105. Construct Binary Tree from Preorder and Inorder Traversal</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">reConstructBinaryTree</span><span class="params">(<span class="keyword">int</span> [] pre,<span class="keyword">int</span> [] in)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> build(pre,<span class="number">0</span>,pre.length-<span class="number">1</span>,in,<span class="number">0</span>,in.length-<span class="number">1</span>);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function">TreeNode <span class="title">build</span><span class="params">(<span class="keyword">int</span> [] pre,<span class="keyword">int</span> ps,<span class="keyword">int</span> pe,<span class="keyword">int</span> [] in,<span class="keyword">int</span> is ,<span class="keyword">int</span> ie)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(ps&gt;pe||is&gt;ie || pe&gt;=pre.length || ie&gt;=in.length)<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">int</span> r=<span class="number">0</span>;<span class="comment">//index of root in in[]</span></div><div class="line">        <span class="comment">//find root</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=is;i&lt;=ie;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(in[i]==pre[ps])&#123;</div><div class="line">                r=i;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> d=r-is;<span class="comment">// length of left part</span></div><div class="line">        TreeNode root=<span class="keyword">new</span> TreeNode(in[r]);</div><div class="line">        root.left=build(pre,ps+<span class="number">1</span>,ps+d,in,is,r-<span class="number">1</span>);</div><div class="line">        root.right=build(pre,ps+d+<span class="number">1</span>,pe,in,r+<span class="number">1</span>,ie);</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
         
         </div>
         <footer class="article-footer">
@@ -249,7 +249,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/20/LC_10/" data-id="cj5btb8fq0001wkvqf9xbr06w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/20/jzoffer_4/" data-id="cj5c6yrht0000vkvqcfp0mw8u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -324,19 +324,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/07/20/honor_1/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    七月中旬随笔
-                
-            </div>
-        </a>
     
-    
-        <a href="/2017/07/20/jzoffer_2/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/07/20/jzoffer_3/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">替换空格</div>
+            <div class="article-nav-title">从尾到头打印链表</div>
         </a>
     
 </nav>

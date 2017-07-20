@@ -3,19 +3,14 @@
 <head>
     <meta charset="utf-8">
     
-    <title>10. Regular Expression Matching | Alison&#39;s Space</title>
+    <title>Alison&#39;s Space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="ProblemImplement regular expression matching with support for &amp;#39;.&amp;#39; and &amp;#39;*&amp;#39;.​12345678910111213141516​&apos;.&apos; Matches any single character.&apos;*&apos; Matches zero or more of the preceding element.Th">
-<meta name="keywords" content="dp">
-<meta property="og:type" content="article">
-<meta property="og:title" content="10. Regular Expression Matching">
-<meta property="og:url" content="http://yoursite.com/2017/07/20/LC_10/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Alison&#39;s Space">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Alison&#39;s Space">
-<meta property="og:description" content="ProblemImplement regular expression matching with support for &amp;#39;.&amp;#39; and &amp;#39;*&amp;#39;.​12345678910111213141516​&apos;.&apos; Matches any single character.&apos;*&apos; Matches zero or more of the preceding element.Th">
-<meta property="og:updated_time" content="2017-07-20T05:19:05.293Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="10. Regular Expression Matching">
-<meta name="twitter:description" content="ProblemImplement regular expression matching with support for &amp;#39;.&amp;#39; and &amp;#39;*&amp;#39;.​12345678910111213141516​&apos;.&apos; Matches any single character.&apos;*&apos; Matches zero or more of the preceding element.Th">
+<meta name="twitter:title" content="Alison&#39;s Space">
     
 
     
@@ -195,15 +190,16 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-LC_10" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main">
+    <article id="post-poj_3258" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
             <header class="article-header">
                 
     
-        <h1 class="article-title" itemprop="name">
-            10. Regular Expression Matching
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/07/20/poj_3258/">POJ 3258 River Hopscotch</a>
         </h1>
     
 
@@ -212,8 +208,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/20/LC_10/">
-            <time datetime="2017-07-20T02:17:22.603Z" itemprop="datePublished">2017-07-20</time>
+        <a href="/2017/07/20/poj_3258/">
+            <time datetime="2017-07-19T17:12:07.315Z" itemprop="datePublished">2017-07-20</time>
         </a>
     </div>
 
@@ -221,13 +217,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+        <a class="article-category-link" href="/categories/POJ/">POJ</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dp/">dp</a>
+        <a class="tag-link" href="/tags/二分法/">二分法</a>, <a class="tag-link" href="/tags/最大化最小值/">最大化最小值</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>
     </div>
 
                     </div>
@@ -238,8 +234,9 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Implement regular expression matching with support for <code>&#39;.&#39;</code> and <code>&#39;*&#39;</code>.<br>​<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">​<span class="string">'.'</span> Matches any single character.</div><div class="line"><span class="string">'*'</span> Matches zero <span class="built_in">or</span> more of the preceding element.</div><div class="line"></div><div class="line">The matching should cover the entire input string (<span class="built_in">not</span> partial).</div><div class="line"></div><div class="line">The function prototype should be:</div><div class="line">bool isMatch(const char *s, const char *p)</div><div class="line"></div><div class="line">Some examples:</div><div class="line">isMatch(<span class="string">"aa"</span>,<span class="string">"a"</span>) → <span class="literal">false</span></div><div class="line">isMatch(<span class="string">"aa"</span>,<span class="string">"aa"</span>) → <span class="literal">true</span></div><div class="line">isMatch(<span class="string">"aaa"</span>,<span class="string">"aa"</span>) → <span class="literal">false</span></div><div class="line">isMatch(<span class="string">"aa"</span>, <span class="string">"a*"</span>) → <span class="literal">true</span></div><div class="line">isMatch(<span class="string">"aa"</span>, <span class="string">".*"</span>) → <span class="literal">true</span></div><div class="line">isMatch(<span class="string">"ab"</span>, <span class="string">".*"</span>) → <span class="literal">true</span></div><div class="line">isMatch(<span class="string">"aab"</span>, <span class="string">"c*a*b"</span>) → <span class="literal">true</span></div></pre></td></tr></table></figure></p>
-<h3 id="My-Solution"><a href="#My-Solution" class="headerlink" title="My Solution"></a>My Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> m = s.length(), n = p.length();</div><div class="line">	<span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</div><div class="line">	dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">2</span>; j &lt;= n; j++) &#123;</div><div class="line">		<span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'*'</span>)</div><div class="line">			dp[<span class="number">0</span>][j] = dp[<span class="number">0</span>][j - <span class="number">2</span>];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</div><div class="line">			<span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'*'</span>)</div><div class="line">				dp[i][j] = dp[i][j - <span class="number">1</span>]</div><div class="line">					|| (j &gt;= <span class="number">2</span> &amp;&amp; dp[i - <span class="number">1</span>][j]</div><div class="line">					&amp;&amp; (s.charAt(i - <span class="number">1</span>) == p.charAt(j - <span class="number">2</span>) </div><div class="line">					|| p.charAt(j - <span class="number">2</span>) == <span class="string">'.'</span>))</div><div class="line">					|| (j &gt; <span class="number">2</span> &amp;&amp; dp[i][j - <span class="number">2</span>]);</div><div class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">'.'</span> </div><div class="line">				|| p.charAt(j - <span class="number">1</span>) == s.charAt(i - <span class="number">1</span>))</div><div class="line">					dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> dp[m][n];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p><a href="http://poj.org/problem?id=3258" target="_blank" rel="external">POJ 3258: River Hopscotch</a><br>从N块石头中移除M块，使得间距最小值最大。</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">//const int INF = 1000000010;</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n, l, m;</div><div class="line"><span class="keyword">int</span> d[<span class="number">50010</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> last = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n - m; i++) &#123;</div><div class="line">		<span class="keyword">int</span> cur = last + <span class="number">1</span>;</div><div class="line">		<span class="keyword">while</span> (cur &lt; n &amp;&amp; d[cur] - d[last] &lt; x) &#123;</div><div class="line">			cur++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (cur == n )<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		last = cur;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</div><div class="line">	sort(d, d + n );</div><div class="line">	<span class="keyword">int</span> lb = <span class="number">0</span>, ub = l + <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (ub - lb &gt; <span class="number">1</span>) &#123;</div><div class="line">		<span class="keyword">int</span> mid = lb + ((ub - lb) &gt;&gt; <span class="number">1</span>);</div><div class="line">		<span class="keyword">if</span> (C(mid))</div><div class="line">			lb = mid;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			ub = mid;</div><div class="line">		<span class="comment">//cout &lt;&lt; "lb= " &lt;&lt; lb &lt;&lt; " ub=" &lt;&lt; ub &lt;&lt; endl;</span></div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; lb &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="comment">//freopen("in.txt",  "r", stdin);</span></div><div class="line">	<span class="built_in">cin</span> &gt;&gt; l &gt;&gt; n &gt;&gt; m;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">		<span class="built_in">cin</span> &gt;&gt; d[i];</div><div class="line">	&#125;</div><div class="line">	d[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">//起点</span></div><div class="line">	d[n + <span class="number">1</span>] = l; <span class="comment">//终点</span></div><div class="line">	n++;</div><div class="line">	n++;</div><div class="line">	solve();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
         
         </div>
         <footer class="article-footer">
@@ -249,7 +246,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/20/LC_10/" data-id="cj5btb8fq0001wkvqf9xbr06w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/07/20/poj_3258/" data-id="cj5btb8fy0006wkvqk45ii3c8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -321,38 +318,13 @@ ga('send', 'pageview');
         </footer>
     </div>
     
-        
-<nav id="article-nav">
-    
-        <a href="/2017/07/20/honor_1/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    七月中旬随笔
-                
-            </div>
-        </a>
-    
-    
-        <a href="/2017/07/20/jzoffer_2/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">替换空格</div>
-        </a>
-    
-</nav>
-
-
-    
 </article>
 
 
-    
-    
-        <section id="comments">
-	<div id="commentContainer"></div>
-</section>
-    
 
+    <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
 </section>
             
                 
