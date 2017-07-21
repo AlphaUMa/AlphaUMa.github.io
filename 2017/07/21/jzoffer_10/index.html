@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/21/jzoffer_10/index.html">
 <meta property="og:site_name" content="Alison&#39;s Space">
 <meta property="og:description" content="题目描述我们可以用21的小矩形横着或者竖着去覆盖更大的矩形。请问用n个21的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？ 分析看到这种“多少种方法”，要么是用backtracking来穷举，要么是用dp。拒绝穷举，于是思考dp。首先因为长方形是2X1的，所以不管怎么摆，一个4x4的格子只可能有2种摆法，一个2X1格子只可能有1种摆法。考虑第n行，要么是先摆好n-1，然后最后横着放个2*">
-<meta property="og:updated_time" content="2017-07-21T05:53:47.342Z">
+<meta property="og:updated_time" content="2017-07-21T07:42:44.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="矩形覆盖">
 <meta name="twitter:description" content="题目描述我们可以用21的小矩形横着或者竖着去覆盖更大的矩形。请问用n个21的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？ 分析看到这种“多少种方法”，要么是用backtracking来穷举，要么是用dp。拒绝穷举，于是思考dp。首先因为长方形是2X1的，所以不管怎么摆，一个4x4的格子只可能有2种摆法，一个2X1格子只可能有1种摆法。考虑第n行，要么是先摆好n-1，然后最后横着放个2*">
@@ -239,7 +239,7 @@ ga('send', 'pageview');
         
             
             <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>我们可以用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>看到这种“多少种方法”，要么是用backtracking来穷举，要么是用dp。<br>拒绝穷举，于是思考dp。<br>首先因为长方形是<code>2X1</code>的，所以不管怎么摆，一个<code>4x4</code>的格子只可能有<code>2</code>种摆法，一个<code>2X1</code>格子只可能有1种摆法。<br>考虑第n行，要么是先摆好n-1，然后最后横着放个<code>2*1</code>，要么是先摆好<code>n-2</code>，然后竖着放两个我<code>2*1</code><br>所以有 <code>dp[i]=dp[i-1]+dp[i-2]</code></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>看到这种“多少种方法”，要么是用backtracking来穷举，要么是用dp。<br>拒绝穷举，于是思考dp。<br>首先因为长方形是<code>2X1</code>的，所以不管怎么摆，一个<code>4x4</code>的格子只可能有<code>2</code>种摆法，一个<code>2X1</code>格子只可能有1种摆法。<br>考虑第n行，要么是先摆好n-1，然后最后横着放个<code>2*1</code>，要么是先摆好<code>n-2</code>，然后竖着放两个<code>2*1</code><br>所以有 <code>dp[i]=dp[i-1]+dp[i-2]</code></p>
 <h1 id="Soltion"><a href="#Soltion" class="headerlink" title="Soltion"></a>Soltion</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">RectCover</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(target&lt;=<span class="number">2</span>)<span class="keyword">return</span> target;</div><div class="line">        <span class="keyword">int</span> p1=<span class="number">1</span>,p2=<span class="number">2</span>;</div><div class="line">        <span class="keyword">while</span>(target--&gt;<span class="number">2</span>)&#123;</div><div class="line">            <span class="keyword">int</span> cur=p1+p2;</div><div class="line">            p1=p2;</div><div class="line">            p2=cur;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> p2;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
         
         </div>
@@ -369,7 +369,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/剑指Offer/">剑指Offer</a></p>
-                            <p class="item-title"><a href="/2017/07/21/jzoffer_14/" class="title">调整数组顺序使奇数位于偶数前面</a></p>
+                            <p class="item-title"><a href="/2017/07/21/jzoffer_14/" class="title">链表中倒数第k个结点</a></p>
                             <p class="item-date"><time datetime="2017-07-21T06:59:53.682Z" itemprop="datePublished">2017-07-21</time></p>
                         </div>
                     </li>
