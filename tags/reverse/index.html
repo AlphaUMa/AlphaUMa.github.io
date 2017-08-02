@@ -3,19 +3,14 @@
 <head>
     <meta charset="utf-8">
     
-    <title>重建二叉树 | Alison&#39;s Space</title>
+    <title>标签: reverse | Alison&#39;s Space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="题目描述输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。其实就是 LC105.Construct Binary Tree from Preorder and Inorder Traversal Solution1">
-<meta name="keywords" content="tree,binary tree">
-<meta property="og:type" content="article">
-<meta property="og:title" content="重建二叉树">
-<meta property="og:url" content="http://yoursite.com/2017/07/20/jzoffer_4/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Alison&#39;s Space">
+<meta property="og:url" content="http://yoursite.com/tags/reverse/index.html">
 <meta property="og:site_name" content="Alison&#39;s Space">
-<meta property="og:description" content="题目描述输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。其实就是 LC105.Construct Binary Tree from Preorder and Inorder Traversal Solution1">
-<meta property="og:updated_time" content="2017-07-20T08:48:24.391Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="重建二叉树">
-<meta name="twitter:description" content="题目描述输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。其实就是 LC105.Construct Binary Tree from Preorder and Inorder Traversal Solution1">
+<meta name="twitter:title" content="Alison&#39;s Space">
     
 
     
@@ -195,164 +190,50 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-jzoffer_4" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
+            <section id="main">
+<div class="timeline timeline-wrap">
+    <div class="timeline-row timeline-row-major">
+        <span class="node"><i class="fa fa-tag"></i></span>
+        <h1 class="title">#reverse</h1>
+    </div>
+    
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
                 
     
-        <h1 class="article-title" itemprop="name">
-            重建二叉树
+        <h1 itemprop="name">
+            <a class="timeline-article-title" href="/2017/07/21/jzoffer_15/">反转链表</a>
         </h1>
     
 
-                
-                    <div class="article-meta">
-                        
+                <div class="article-meta">
+                    
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/20/jzoffer_4/">
-            <time datetime="2017-07-20T08:45:12.987Z" itemprop="datePublished">2017-07-20</time>
+        <a href="/2017/07/21/jzoffer_15/">
+            <time datetime="2017-07-21T08:23:05.883Z" itemprop="datePublished">2017-07-21</time>
         </a>
     </div>
 
 
-                        
+                    
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/剑指Offer/">剑指Offer</a>
     </div>
 
-                        
+                    
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/binary-tree/">binary tree</a>, <a class="tag-link" href="/tags/tree/">tree</a>
+        <a class="tag-link" href="/tags/list/">list</a>, <a class="tag-link" href="/tags/reverse/">reverse</a>
     </div>
 
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。<br>其实就是 <a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="external">LC105.Construct Binary Tree from Preorder and Inorder Traversal</a></p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">reConstructBinaryTree</span><span class="params">(<span class="keyword">int</span> [] pre,<span class="keyword">int</span> [] in)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> build(pre,<span class="number">0</span>,pre.length-<span class="number">1</span>,in,<span class="number">0</span>,in.length-<span class="number">1</span>);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function">TreeNode <span class="title">build</span><span class="params">(<span class="keyword">int</span> [] pre,<span class="keyword">int</span> ps,<span class="keyword">int</span> pe,<span class="keyword">int</span> [] in,<span class="keyword">int</span> is ,<span class="keyword">int</span> ie)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(ps&gt;pe||is&gt;ie || pe&gt;=pre.length || ie&gt;=in.length)<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">int</span> r=<span class="number">0</span>;<span class="comment">//index of root in in[]</span></div><div class="line">        <span class="comment">//find root</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=is;i&lt;=ie;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(in[i]==pre[ps])&#123;</div><div class="line">                r=i;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> d=r-is;<span class="comment">// length of left part</span></div><div class="line">        TreeNode root=<span class="keyword">new</span> TreeNode(in[r]);</div><div class="line">        root.left=build(pre,ps+<span class="number">1</span>,ps+d,in,is,r-<span class="number">1</span>);</div><div class="line">        root.right=build(pre,ps+d+<span class="number">1</span>,pe,in,r+<span class="number">1</span>,ie);</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/07/20/jzoffer_4/" data-id="cj5c6yrht0000vkvqcfp0mw8u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2017/07/20/jzoffer_5/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    用两个栈实现队列
-                
+                </div>
             </div>
-        </a>
+        </div>
     
-    
-        <a href="/2017/07/20/jzoffer_3/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">从尾到头打印链表</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-    
-    
-        <section id="comments">
-	<div id="commentContainer"></div>
-</section>
-    
-
+</div>
 </section>
             
                 
