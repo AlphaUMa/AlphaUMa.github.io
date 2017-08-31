@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>跳台阶 | Alison&#39;s Space</title>
+    <title>变态跳台阶 | Alison&#39;s Space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。 分析最BF的方法肯定是dp,对每个dp[i],将i之前所有的dp[j]累加,这样复杂度为n平方,想都不用想肯定TLE了然而仔细一想由dp[i]=∑dp[j](j&amp;lt;i)，直接得到dp[i]=2*dp[i-1]，于是复杂度降为n Solution123456789101112131415publi">
+    <meta name="description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。 分析最BF的方法肯定是dp,对每个dp[i],将i之前所有的dp[j]累加,这样复杂度为n平方,想都不用想肯定TLE了然而仔细一想由dp[i]=∑dp[j](j&amp;lt;i)，直接得到dp[i]=2*dp[i-1]，于是复杂度降为n Solution1234567891011121">
 <meta name="keywords" content="dp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跳台阶">
+<meta property="og:title" content="变态跳台阶">
 <meta property="og:url" content="http://yoursite.com/2017/07/21/jzoffer_9/index.html">
 <meta property="og:site_name" content="Alison&#39;s Space">
-<meta property="og:description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。 分析最BF的方法肯定是dp,对每个dp[i],将i之前所有的dp[j]累加,这样复杂度为n平方,想都不用想肯定TLE了然而仔细一想由dp[i]=∑dp[j](j&amp;lt;i)，直接得到dp[i]=2*dp[i-1]，于是复杂度降为n Solution123456789101112131415publi">
-<meta property="og:updated_time" content="2017-08-02T08:06:44.140Z">
+<meta property="og:description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。 分析最BF的方法肯定是dp,对每个dp[i],将i之前所有的dp[j]累加,这样复杂度为n平方,想都不用想肯定TLE了然而仔细一想由dp[i]=∑dp[j](j&amp;lt;i)，直接得到dp[i]=2*dp[i-1]，于是复杂度降为n Solution1234567891011121">
+<meta property="og:updated_time" content="2017-08-31T06:00:43.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="跳台阶">
-<meta name="twitter:description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。 分析最BF的方法肯定是dp,对每个dp[i],将i之前所有的dp[j]累加,这样复杂度为n平方,想都不用想肯定TLE了然而仔细一想由dp[i]=∑dp[j](j&amp;lt;i)，直接得到dp[i]=2*dp[i-1]，于是复杂度降为n Solution123456789101112131415publi">
+<meta name="twitter:title" content="变态跳台阶">
+<meta name="twitter:description" content="题目描述一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。 分析最BF的方法肯定是dp,对每个dp[i],将i之前所有的dp[j]累加,这样复杂度为n平方,想都不用想肯定TLE了然而仔细一想由dp[i]=∑dp[j](j&amp;lt;i)，直接得到dp[i]=2*dp[i-1]，于是复杂度降为n Solution1234567891011121">
     
 
     
@@ -203,7 +203,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            跳台阶
+            变态跳台阶
         </h1>
     
 
@@ -238,7 +238,7 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>最BF的方法肯定是dp,对每个<code>dp[i]</code>,将i之前所有的<code>dp[j]</code>累加,这样复杂度为<code>n平方</code>,想都不用想肯定TLE了<br>然而仔细一想由<code>dp[i]=∑dp[j](j&lt;i)</code>，直接得到<code>dp[i]=2*dp[i-1]</code>，于是复杂度降为<code>n</code></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">JumpFloorII</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n=target;</div><div class="line">        <span class="keyword">int</span>[] dp=<span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(i&lt;=<span class="number">2</span>)&#123;</div><div class="line">                dp[i]=i;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">          dp[i]=dp[i-<span class="number">1</span>]*<span class="number">2</span>;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> dp[n];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>进一步节省空间，去掉dp数组<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">JumpFloorII</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n=target;</div><div class="line">        <span class="keyword">if</span>(target&lt;=<span class="number">2</span>)<span class="keyword">return</span> target;</div><div class="line">        <span class="keyword">int</span> p=<span class="number">2</span>;</div><div class="line">        <span class="keyword">while</span>(target--&gt;<span class="number">2</span>)&#123;</div><div class="line">            p*=<span class="number">2</span>;</div><div class="line">        &#125;       </div><div class="line">        <span class="keyword">return</span> p;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -339,7 +339,7 @@ ga('send', 'pageview');
     
         <a href="/2017/07/21/jzoffer_8/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">变态跳台阶</div>
+            <div class="article-nav-title">跳台阶</div>
         </a>
     
 </nav>
