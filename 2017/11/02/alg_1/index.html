@@ -3,19 +3,18 @@
 <head>
     <meta charset="utf-8">
     
-    <title>斐波那契数列 | Alison&#39;s Space</title>
+    <title>常用的几个code snippet | Alison&#39;s Space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="题目描述大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。n&amp;lt;=39 分析 递归不好，n超大的时候溢出 用节省空间版dp  Solution123456789101112public class Solution &amp;#123;    public int Fibonacci(int n) &amp;#123;        int pre1=0,pre2=1;		if(n">
-<meta name="keywords" content="dp,recursion">
+    <meta name="description" content="进制转换123456789//将x转为n进制static String convert(int x, int n) &amp;#123;        StringBuilder sb = new StringBuilder();        while (x &amp;gt; 0) &amp;#123;            sb.insert(0, x % n);            x /= n;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="斐波那契数列">
-<meta property="og:url" content="http://yoursite.com/2017/07/21/jzoffer_7/index.html">
+<meta property="og:title" content="常用的几个code snippet">
+<meta property="og:url" content="http://yoursite.com/2017/11/02/alg_1/index.html">
 <meta property="og:site_name" content="Alison&#39;s Space">
-<meta property="og:description" content="题目描述大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。n&amp;lt;=39 分析 递归不好，n超大的时候溢出 用节省空间版dp  Solution123456789101112public class Solution &amp;#123;    public int Fibonacci(int n) &amp;#123;        int pre1=0,pre2=1;		if(n">
-<meta property="og:updated_time" content="2017-08-02T08:06:36.433Z">
+<meta property="og:description" content="进制转换123456789//将x转为n进制static String convert(int x, int n) &amp;#123;        StringBuilder sb = new StringBuilder();        while (x &amp;gt; 0) &amp;#123;            sb.insert(0, x % n);            x /= n;">
+<meta property="og:updated_time" content="2017-11-02T07:45:48.317Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="斐波那契数列">
-<meta name="twitter:description" content="题目描述大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。n&amp;lt;=39 分析 递归不好，n超大的时候溢出 用节省空间版dp  Solution123456789101112public class Solution &amp;#123;    public int Fibonacci(int n) &amp;#123;        int pre1=0,pre2=1;		if(n">
+<meta name="twitter:title" content="常用的几个code snippet">
+<meta name="twitter:description" content="进制转换123456789//将x转为n进制static String convert(int x, int n) &amp;#123;        StringBuilder sb = new StringBuilder();        while (x &amp;gt; 0) &amp;#123;            sb.insert(0, x % n);            x /= n;">
     
 
     
@@ -195,7 +194,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-jzoffer_7" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-alg_1" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -203,7 +202,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            斐波那契数列
+            常用的几个code snippet
         </h1>
     
 
@@ -212,8 +211,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/21/jzoffer_7/">
-            <time datetime="2017-07-21T02:24:53.906Z" itemprop="datePublished">2017-07-21</time>
+        <a href="/2017/11/02/alg_1/">
+            <time datetime="2017-11-02T07:21:39.404Z" itemprop="datePublished">2017-11-02</time>
         </a>
     </div>
 
@@ -221,15 +220,10 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/剑指/">剑指</a>
+        <a class="article-category-link" href="/categories/算法和数据结构/">算法和数据结构</a>
     </div>
 
                         
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dp/">dp</a>, <a class="tag-link" href="/tags/recursion/">recursion</a>
-    </div>
-
                     </div>
                 
             </header>
@@ -238,12 +232,27 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。<br>n&lt;=39</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><ul>
-<li>递归不好，n超大的时候溢出</li>
-<li>用节省空间版dp</li>
-</ul>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> pre1=<span class="number">0</span>,pre2=<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(n&lt;=<span class="number">1</span>)<span class="keyword">return</span> n;</div><div class="line">        <span class="keyword">while</span>(n--&gt;=<span class="number">2</span>)&#123;</div><div class="line">            <span class="keyword">int</span> tmp=pre2;</div><div class="line">            pre2=pre1+pre2;</div><div class="line">            pre1=tmp;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> pre2;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h1 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将x转为n进制</span></div><div class="line"><span class="function"><span class="keyword">static</span> String <span class="title">convert</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">while</span> (x &gt; <span class="number">0</span>) &#123;</div><div class="line">            sb.insert(<span class="number">0</span>, x % n);</div><div class="line">            x /= n;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sb.toString();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h1 id="求素数（求素数-md）"><a href="#求素数（求素数-md）" class="headerlink" title="求素数（求素数.md）"></a>求素数（求素数.md）</h1><h1 id="计算两个整数a-b的最大公约数（欧几里德算法）"><a href="#计算两个整数a-b的最大公约数（欧几里德算法）" class="headerlink" title="计算两个整数a,b的最大公约数（欧几里德算法）"></a>计算两个整数a,b的最大公约数（欧几里德算法）</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(b==<span class="number">0</span>)<span class="keyword">return</span> a;</div><div class="line">  <span class="keyword">return</span> gcd(b,a%b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="在已知a-b求解一组x，y使得ax-by-gcd-a-b-d-扩展欧几里德算法"><a href="#在已知a-b求解一组x，y使得ax-by-gcd-a-b-d-扩展欧几里德算法" class="headerlink" title="在已知a, b求解一组x，y使得ax+by = gcd(a, b) =d(扩展欧几里德算法)"></a>在已知a, b求解一组x，y使得<code>ax+by = gcd(a, b) =d</code>(扩展欧几里德算法)</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">exGcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        x=<span class="number">1</span>;y=<span class="number">0</span>;</div><div class="line">        <span class="keyword">return</span> a;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> r=exGcd(b,a%b,x,y);</div><div class="line">    <span class="keyword">int</span> t=x;x=y;y=t-a/b*y;</div><div class="line">    <span class="keyword">return</span> r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>试除法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">int is_prime(int n)</div><div class="line">  &#123;  int i;</div><div class="line">      if (n&lt;=1)  return 0;    //n不是素数，返回零</div><div class="line">      for(i=2; i*i&lt;=n; i++)    //for(int i = 2; i &lt;= sqrt(n); ++i)</div><div class="line">          &#123; </div><div class="line">            if( n%i==0 ) return 0;  //判断n能否被i整除</div><div class="line">          &#125;</div><div class="line">      return 1;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>筛法(Eratosthenes)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//筛选法求1000以内素数（删除所有素数的倍数）</div><div class="line">    vector&lt;int&gt; v(1000,1);</div><div class="line">    for(int i=2;i&lt;1000;++i)&#123;</div><div class="line">        for(int j=2;i*j&lt;1000;++j)&#123;</div><div class="line">            if(v[i])&#123;</div><div class="line">                v[i*j]=0;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="快速幂运算"><a href="#快速幂运算" class="headerlink" title="快速幂运算"></a>快速幂运算</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">typedef long long ll;</div><div class="line">ll mod_pow(ll x, ll n, ll mod) &#123;</div><div class="line">ll res = 1;</div><div class="line">while (n) &#123;</div><div class="line">if (n &amp; 1)res = res * x % mod;</div><div class="line">x = x * x % mod;</div><div class="line">n &gt;&gt; 1;</div><div class="line">&#125;</div><div class="line">return res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="统计后面小于自己的个数"><a href="#统计后面小于自己的个数" class="headerlink" title="统计后面小于自己的个数"></a>统计后面小于自己的个数</h1><p>也就是 315. Count of Smaller Numbers After Self<br>此题还能用线段树解，但是代码太多，直接二分法吧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; countSmaller(int[] nums) &#123;</div><div class="line">        Integer[] ans = new Integer[nums.length];</div><div class="line">        List&lt;Integer&gt; sorted = new ArrayList&lt;Integer&gt;();</div><div class="line">        for (int i = nums.length - 1; i &gt;= 0; i--) &#123;</div><div class="line">            int index = findIndex(sorted, nums[i]);</div><div class="line">            ans[i] = index;</div><div class="line">            sorted.add(index, nums[i]);</div><div class="line">        &#125;</div><div class="line">        return Arrays.asList(ans);</div><div class="line">    &#125;</div><div class="line">    private int findIndex(List&lt;Integer&gt; sorted, int target) &#123;</div><div class="line">        if (sorted.size() == 0) return 0;</div><div class="line">        int start = 0;</div><div class="line">        int end = sorted.size() - 1;</div><div class="line">        if (sorted.get(end) &lt; target) return end + 1;</div><div class="line">        if (sorted.get(start) &gt;= target) return 0;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            int mid = start + (end - start) / 2;</div><div class="line">            if (sorted.get(mid) &lt; target) &#123;</div><div class="line">                start = mid + 1;</div><div class="line">            &#125; else &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (sorted.get(start) &gt;= target) return start;</div><div class="line">        return end;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h1 id="最长递增序列（LIS"><a href="#最长递增序列（LIS" class="headerlink" title="最长递增序列（LIS)"></a>最长递增序列（LIS)</h1><ol>
+<li>（不采用）基础解法，O(n^2), TLE<br>dp[i]=以ai为末尾的最长上升子序列的长度<br>转移式：`dp[i]=max(dp[i],dp[j]+1) j&lt;i</li>
+<li>优化解法，O(n*logn)<br>dp[i]=长度为i+1的上升子序列中末尾元素的最小值</li>
+</ol>
+<p><strong>Java8</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public int lengthOfLIS(int[] nums) &#123;</div><div class="line">    if(nums==null || nums.length==0)</div><div class="line">        return 0;</div><div class="line"> </div><div class="line">    ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;(); </div><div class="line"> </div><div class="line">    for(int num: nums)&#123;</div><div class="line">        if(list.size()==0 || num&gt;list.get(list.size()-1))&#123;</div><div class="line">            list.add(num);</div><div class="line">        &#125;else&#123;</div><div class="line">            int i=0; </div><div class="line">            int j=list.size()-1;</div><div class="line"> </div><div class="line">            while(i&lt;j)&#123;</div><div class="line">                int mid = (i+j)/2;</div><div class="line">                if(list.get(mid) &lt; num)&#123;</div><div class="line">                    i=mid+1;</div><div class="line">                &#125;else&#123;</div><div class="line">                    j=mid;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"> </div><div class="line">            list.set(j, num);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    return list.size();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>C++</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">int lengthOfLIS(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">    vector&lt;int&gt; ans;</div><div class="line">    for (int a : nums)</div><div class="line">        if (ans.size() == 0 || a &gt; ans.back()) ans.push_back(a);</div><div class="line">        else *lower_bound(ans.begin(), ans.end(), a) = a;</div><div class="line">    return ans.size();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="最长公共子序列-LCS"><a href="#最长公共子序列-LCS" class="headerlink" title="最长公共子序列(LCS)"></a>最长公共子序列(LCS)</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestCommonSubsequence</span><span class="params">(String A, String B)</span> </span>&#123;</div><div class="line">      <span class="keyword">int</span> n = A.length();</div><div class="line">      <span class="keyword">int</span> m = B.length();</div><div class="line">      <span class="keyword">int</span> f[][] = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>][m + <span class="number">1</span>];</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</div><div class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;</div><div class="line">              f[i][j] = Math.max(f[i - <span class="number">1</span>][j], f[i][j - <span class="number">1</span>]);</div><div class="line">              <span class="keyword">if</span>(A.charAt(i - <span class="number">1</span>) == B.charAt(j - <span class="number">1</span>))</div><div class="line">                  f[i][j] = f[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> f[n][m];</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+
         
         </div>
         <footer class="article-footer">
@@ -253,7 +262,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/07/21/jzoffer_7/" data-id="cj9i3whbj0020d8rdc1noluqi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/11/02/alg_1/" data-id="cj9i5kqgz0000ysrdp6thcvpk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -328,19 +337,19 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/07/21/jzoffer_8/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/11/02/alg_pack/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    跳台阶
+                    背包问题
                 
             </div>
         </a>
     
     
-        <a href="/2017/07/21/jzoffer_6/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/11/02/image_warp_1/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">旋转数组的最小数字</div>
+            <div class="article-nav-title">人脸变形常用方法</div>
         </a>
     
 </nav>

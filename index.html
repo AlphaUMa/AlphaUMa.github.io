@@ -162,7 +162,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                27
+                29
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -191,6 +191,300 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-alg_pack" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/11/02/alg_pack/">背包问题</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/02/alg_pack/">
+            <time datetime="2017-11-02T07:24:39.198Z" itemprop="datePublished">2017-11-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/算法和数据结构/">算法和数据结构</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <ul>
+<li>01背包（ZeroOnePack）<br>有<code>N</code>件物品和一个容量为<code>W</code>的背包。（<strong>每种物品均只有一件</strong>）第<code>i</code>件物品的重量是<code>w[i]</code>，价值是<code>v[i]</code>。求解将哪些物品装入背包可使价值总和最大。</li>
+<li>完全背包(CompletePack)<br>有<code>N</code>种物品和一个容量为<code>W</code>的背包，<strong>每种物品都有无限件可用</strong>。第<code>i</code>种物品的费用是<code>w[i]</code>，价值是<code>v[i]</code>。求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大。</li>
+<li>多重背包(MultiplePack)<br>有<code>N</code>种物品和一个容量为<code>W</code>背包。<strong>第<code>i</code>种物品最多有<code>n[i]</code>件可用</strong>，每件费用是<code>w[i]</code>，价值是<code>v[i]</code>。求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大。</li>
+</ul>
+<h1 id="一要注意每个循环的取值范围"><a href="#一要注意每个循环的取值范围" class="headerlink" title="一要注意每个循环的取值范围"></a>一要注意每个循环的<strong>取值范围</strong></h1><h1 id="二要注意每个循环的循环方向"><a href="#二要注意每个循环的循环方向" class="headerlink" title="二要注意每个循环的循环方向"></a>二要注意每个循环的<strong>循环方向</strong></h1><h1 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h1><p>递推式：<code>dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - w[i]] + v[i])</code></p>
+<ul>
+<li><p>二维数组，正向，时间<code>O(NW)</code>,空间<code>O(NW)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">for (int j = 0; j &lt;= W; ++j) &#123;</div><div class="line">    dp[0][j] = 0;</div><div class="line">&#125;</div><div class="line">for (int i = 1; i &lt; N; ++i) &#123;</div><div class="line">    for (int j = 0; j &lt;= W; ++j) &#123;</div><div class="line">        if (j &lt; w[i])</div><div class="line">            dp[i][j] = dp[i - 1][j];</div><div class="line">        else</div><div class="line">            dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - w[i]] + v[i])</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>优化空间复杂度——一维数组，外循环正向，内循环逆向，时间<code>O(NW)</code>,空间<code>O(W)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">for (int i = 0; i &lt; N; ++i) &#123;</div><div class="line">    for (int j = W; j &gt;= w[i]; --j) &#123;</div><div class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong><em>Note:</em></strong> 为啥是逆向？<br>要保证在推<code>dp[i][j]</code>时，能够取用<code>dp[i - 1][j]</code>和<code>dp[i - 1][j - w[i]]</code>,看图，只有当j<code>从右向左</code>更新的时候，更新到<code>dp[j]</code>时才能取用到<strong>原来的</strong><code>dp[j]</code>和<code>dp[j-w[i]]</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">        j-w[i]     j    </div><div class="line">i-1      ●         ●</div><div class="line">i                  ☆</div></pre></td></tr></table></figure>
+<p>☆表示要求的状态，●表示求☆状态需要的状态</p>
+<h1 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h1><p>这个问题有三种优化方式，（参考背包九讲）现在只选第三种<code>O(NW)</code>的算法<br>其实就是对第i件物品放入多少进行讨论，分两种就好了，一件都不放！放一件以上！于是：<br>递推式：<code>dp[i][j]=max(dp[i-1][j],dp[i][j-c[i]]+w[i])，内外循环都是正向！</code><br>其中，</p>
+<ul>
+<li>dp[i-1][j]——一件都没放</li>
+<li>dp[i][j-w[i]]+v[i]——至少放了一件<br>一维数组代码如下，<strong>它跟01背包问题的代码只有内循环方向相反而已！！</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">        j-w[i]     j    </div><div class="line">i-1                ●</div><div class="line">i         ●        ☆</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for (int i = 0; i &lt; N; ++i) &#123;</div><div class="line">    for (int j = w[i]; j &lt;= W; ++j) &#123;</div><div class="line">        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong><em>Note:</em></strong> 关于滚动降维后的循环方向问题，看递推式，像上面一样画图表示后就一目了然！</p>
+<h1 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h1><p>递推式见“背包九讲”<br>多重背包好像较多用于判断可行性（POJ 1742）</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/11/02/alg_pack/" data-id="cj9i63i9000009crd5cu6rhqd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-alg_1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/11/02/alg_1/">常用的几个code snippet</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/02/alg_1/">
+            <time datetime="2017-11-02T07:21:39.404Z" itemprop="datePublished">2017-11-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/算法和数据结构/">算法和数据结构</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将x转为n进制</span></div><div class="line"><span class="function"><span class="keyword">static</span> String <span class="title">convert</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">while</span> (x &gt; <span class="number">0</span>) &#123;</div><div class="line">            sb.insert(<span class="number">0</span>, x % n);</div><div class="line">            x /= n;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> sb.toString();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h1 id="求素数（求素数-md）"><a href="#求素数（求素数-md）" class="headerlink" title="求素数（求素数.md）"></a>求素数（求素数.md）</h1><h1 id="计算两个整数a-b的最大公约数（欧几里德算法）"><a href="#计算两个整数a-b的最大公约数（欧几里德算法）" class="headerlink" title="计算两个整数a,b的最大公约数（欧几里德算法）"></a>计算两个整数a,b的最大公约数（欧几里德算法）</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">  <span class="keyword">if</span>(b==<span class="number">0</span>)<span class="keyword">return</span> a;</div><div class="line">  <span class="keyword">return</span> gcd(b,a%b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="在已知a-b求解一组x，y使得ax-by-gcd-a-b-d-扩展欧几里德算法"><a href="#在已知a-b求解一组x，y使得ax-by-gcd-a-b-d-扩展欧几里德算法" class="headerlink" title="在已知a, b求解一组x，y使得ax+by = gcd(a, b) =d(扩展欧几里德算法)"></a>在已知a, b求解一组x，y使得<code>ax+by = gcd(a, b) =d</code>(扩展欧几里德算法)</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">exGcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        x=<span class="number">1</span>;y=<span class="number">0</span>;</div><div class="line">        <span class="keyword">return</span> a;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> r=exGcd(b,a%b,x,y);</div><div class="line">    <span class="keyword">int</span> t=x;x=y;y=t-a/b*y;</div><div class="line">    <span class="keyword">return</span> r;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>试除法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">int is_prime(int n)</div><div class="line">  &#123;  int i;</div><div class="line">      if (n&lt;=1)  return 0;    //n不是素数，返回零</div><div class="line">      for(i=2; i*i&lt;=n; i++)    //for(int i = 2; i &lt;= sqrt(n); ++i)</div><div class="line">          &#123; </div><div class="line">            if( n%i==0 ) return 0;  //判断n能否被i整除</div><div class="line">          &#125;</div><div class="line">      return 1;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>筛法(Eratosthenes)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//筛选法求1000以内素数（删除所有素数的倍数）</div><div class="line">    vector&lt;int&gt; v(1000,1);</div><div class="line">    for(int i=2;i&lt;1000;++i)&#123;</div><div class="line">        for(int j=2;i*j&lt;1000;++j)&#123;</div><div class="line">            if(v[i])&#123;</div><div class="line">                v[i*j]=0;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="快速幂运算"><a href="#快速幂运算" class="headerlink" title="快速幂运算"></a>快速幂运算</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">typedef long long ll;</div><div class="line">ll mod_pow(ll x, ll n, ll mod) &#123;</div><div class="line">ll res = 1;</div><div class="line">while (n) &#123;</div><div class="line">if (n &amp; 1)res = res * x % mod;</div><div class="line">x = x * x % mod;</div><div class="line">n &gt;&gt; 1;</div><div class="line">&#125;</div><div class="line">return res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="统计后面小于自己的个数"><a href="#统计后面小于自己的个数" class="headerlink" title="统计后面小于自己的个数"></a>统计后面小于自己的个数</h1><p>也就是 315. Count of Smaller Numbers After Self<br>此题还能用线段树解，但是代码太多，直接二分法吧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public List&lt;Integer&gt; countSmaller(int[] nums) &#123;</div><div class="line">        Integer[] ans = new Integer[nums.length];</div><div class="line">        List&lt;Integer&gt; sorted = new ArrayList&lt;Integer&gt;();</div><div class="line">        for (int i = nums.length - 1; i &gt;= 0; i--) &#123;</div><div class="line">            int index = findIndex(sorted, nums[i]);</div><div class="line">            ans[i] = index;</div><div class="line">            sorted.add(index, nums[i]);</div><div class="line">        &#125;</div><div class="line">        return Arrays.asList(ans);</div><div class="line">    &#125;</div><div class="line">    private int findIndex(List&lt;Integer&gt; sorted, int target) &#123;</div><div class="line">        if (sorted.size() == 0) return 0;</div><div class="line">        int start = 0;</div><div class="line">        int end = sorted.size() - 1;</div><div class="line">        if (sorted.get(end) &lt; target) return end + 1;</div><div class="line">        if (sorted.get(start) &gt;= target) return 0;</div><div class="line">        while (start + 1 &lt; end) &#123;</div><div class="line">            int mid = start + (end - start) / 2;</div><div class="line">            if (sorted.get(mid) &lt; target) &#123;</div><div class="line">                start = mid + 1;</div><div class="line">            &#125; else &#123;</div><div class="line">                end = mid;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (sorted.get(start) &gt;= target) return start;</div><div class="line">        return end;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h1 id="最长递增序列（LIS"><a href="#最长递增序列（LIS" class="headerlink" title="最长递增序列（LIS)"></a>最长递增序列（LIS)</h1><ol>
+<li>（不采用）基础解法，O(n^2), TLE<br>dp[i]=以ai为末尾的最长上升子序列的长度<br>转移式：`dp[i]=max(dp[i],dp[j]+1) j&lt;i</li>
+<li>优化解法，O(n*logn)<br>dp[i]=长度为i+1的上升子序列中末尾元素的最小值</li>
+</ol>
+<p><strong>Java8</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public int lengthOfLIS(int[] nums) &#123;</div><div class="line">    if(nums==null || nums.length==0)</div><div class="line">        return 0;</div><div class="line"> </div><div class="line">    ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;(); </div><div class="line"> </div><div class="line">    for(int num: nums)&#123;</div><div class="line">        if(list.size()==0 || num&gt;list.get(list.size()-1))&#123;</div><div class="line">            list.add(num);</div><div class="line">        &#125;else&#123;</div><div class="line">            int i=0; </div><div class="line">            int j=list.size()-1;</div><div class="line"> </div><div class="line">            while(i&lt;j)&#123;</div><div class="line">                int mid = (i+j)/2;</div><div class="line">                if(list.get(mid) &lt; num)&#123;</div><div class="line">                    i=mid+1;</div><div class="line">                &#125;else&#123;</div><div class="line">                    j=mid;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"> </div><div class="line">            list.set(j, num);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    return list.size();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>C++</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">int lengthOfLIS(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">    vector&lt;int&gt; ans;</div><div class="line">    for (int a : nums)</div><div class="line">        if (ans.size() == 0 || a &gt; ans.back()) ans.push_back(a);</div><div class="line">        else *lower_bound(ans.begin(), ans.end(), a) = a;</div><div class="line">    return ans.size();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="最长公共子序列-LCS"><a href="#最长公共子序列-LCS" class="headerlink" title="最长公共子序列(LCS)"></a>最长公共子序列(LCS)</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestCommonSubsequence</span><span class="params">(String A, String B)</span> </span>&#123;</div><div class="line">      <span class="keyword">int</span> n = A.length();</div><div class="line">      <span class="keyword">int</span> m = B.length();</div><div class="line">      <span class="keyword">int</span> f[][] = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>][m + <span class="number">1</span>];</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</div><div class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;</div><div class="line">              f[i][j] = Math.max(f[i - <span class="number">1</span>][j], f[i][j - <span class="number">1</span>]);</div><div class="line">              <span class="keyword">if</span>(A.charAt(i - <span class="number">1</span>) == B.charAt(j - <span class="number">1</span>))</div><div class="line">                  f[i][j] = f[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> f[n][m];</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/11/02/alg_1/" data-id="cj9i5kqgz0000ysrdp6thcvpk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-image_warp_1" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1243,268 +1537,6 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-jzoffer_12" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/07/21/jzoffer_12/">数值的整数次方</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/07/21/jzoffer_12/">
-            <time datetime="2017-07-21T06:36:43.709Z" itemprop="datePublished">2017-07-21</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/剑指/">剑指</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/bit-manipulation/">bit manipulation</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>原理同快速幂运算</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">Power</span><span class="params">(<span class="keyword">double</span> base, <span class="keyword">int</span> exponent)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> e=Math.abs(exponent);</div><div class="line">        <span class="keyword">double</span> r=<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(e&gt;<span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">if</span>((e&amp;<span class="number">1</span>)&gt;<span class="number">0</span>)r*=base;</div><div class="line">            base*=base;</div><div class="line">            e&gt;&gt;=<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> (exponent&gt;=<span class="number">0</span>)?r:<span class="number">1</span>/r;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/07/21/jzoffer_12/" data-id="cj9i3wha6000rd8rdovmnvswu" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-jzoffer_11" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/07/21/jzoffer_11/">二进制中1的个数</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/07/21/jzoffer_11/">
-            <time datetime="2017-07-21T06:03:49.215Z" itemprop="datePublished">2017-07-21</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/剑指/">剑指</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/bit-manipulation/">bit manipulation</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p><code>n&amp;(n-1)</code>可以去掉最右的1，不停地去掉1，直至为0</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">NumberOf1</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(n!=<span class="number">0</span>)&#123;</div><div class="line">            n&amp;=n-<span class="number">1</span>;   <span class="comment">//remove rightmost 1</span></div><div class="line">            cnt++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> cnt;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/07/21/jzoffer_11/" data-id="cj9i3wha0000kd8rdgtl7jrg9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
     </nav>
@@ -1518,6 +1550,24 @@ ga('send', 'pageview');
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/算法和数据结构/">算法和数据结构</a></p>
+                            <p class="item-title"><a href="/2017/11/02/alg_pack/" class="title">背包问题</a></p>
+                            <p class="item-date"><time datetime="2017-11-02T07:24:39.198Z" itemprop="datePublished">2017-11-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/算法和数据结构/">算法和数据结构</a></p>
+                            <p class="item-title"><a href="/2017/11/02/alg_1/" class="title">常用的几个code snippet</a></p>
+                            <p class="item-date"><time datetime="2017-11-02T07:21:39.404Z" itemprop="datePublished">2017-11-02</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1546,24 +1596,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/剑指/">剑指</a></p>
-                            <p class="item-title"><a href="/2017/08/18/jzoffer_16/" class="title">HasSubtree</a></p>
-                            <p class="item-date"><time datetime="2017-08-18T12:24:16.644Z" itemprop="datePublished">2017-08-18</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/农药/">农药</a></p>
-                            <p class="item-title"><a href="/2017/08/02/honor_2/" class="title">花花使用总结</a></p>
-                            <p class="item-date"><time datetime="2017-08-02T07:44:58.289Z" itemprop="datePublished">2017-08-02</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1573,7 +1605,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IOS/">IOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kickstart/">Kickstart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/POJ/">POJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/农药/">农药</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/剑指/">剑指</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图像处理/">图像处理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图像理解/">图像理解</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/广播剧/">广播剧</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IOS/">IOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kickstart/">Kickstart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/POJ/">POJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/农药/">农药</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/剑指/">剑指</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图像处理/">图像处理</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图像理解/">图像理解</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/广播剧/">广播剧</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法和数据结构/">算法和数据结构</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -1582,7 +1614,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">22</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">22</span></li></ul>
         </div>
     </div>
 
