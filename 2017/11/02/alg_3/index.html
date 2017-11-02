@@ -3,14 +3,18 @@
 <head>
     <meta charset="utf-8">
     
-    <title>分类: 图像处理 | Alison&#39;s Space</title>
+    <title>Ternary search（三元搜索） | Alison&#39;s Space</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Alison&#39;s Space">
-<meta property="og:url" content="http://yoursite.com/categories/图像处理/index.html">
+    <meta name="description" content="要点 用于单调函数求最值 有两个中间变量m1,m2 逻辑Let a unimodal function f(x) on some interval [l; r]. Take any two points m1 and m2 in this segment: l &amp;lt; m1 &amp;lt; m2 &amp;lt; r. Then there are three possibilities:  if f(m1)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ternary search（三元搜索）">
+<meta property="og:url" content="http://yoursite.com/2017/11/02/alg_3/index.html">
 <meta property="og:site_name" content="Alison&#39;s Space">
+<meta property="og:description" content="要点 用于单调函数求最值 有两个中间变量m1,m2 逻辑Let a unimodal function f(x) on some interval [l; r]. Take any two points m1 and m2 in this segment: l &amp;lt; m1 &amp;lt; m2 &amp;lt; r. Then there are three possibilities:  if f(m1)">
+<meta property="og:updated_time" content="2017-11-02T08:29:50.439Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alison&#39;s Space">
+<meta name="twitter:title" content="Ternary search（三元搜索）">
+<meta name="twitter:description" content="要点 用于单调函数求最值 有两个中间变量m1,m2 逻辑Let a unimodal function f(x) on some interval [l; r]. Take any two points m1 and m2 in this segment: l &amp;lt; m1 &amp;lt; m2 &amp;lt; r. Then there are three possibilities:  if f(m1)">
     
 
     
@@ -190,45 +194,170 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-folder"></i></span>
-        <h1 class="title">图像处理</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-alg_3" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/11/02/image_warp_1/">人脸变形常用方法</a>
+        <h1 class="article-title" itemprop="name">
+            Ternary search（三元搜索）
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/11/02/image_warp_1/">
-            <time datetime="2017-11-02T05:53:11.636Z" itemprop="datePublished">2017-11-02</time>
+        <a href="/2017/11/02/alg_3/">
+            <time datetime="2017-11-02T08:25:05.694Z" itemprop="datePublished">2017-11-02</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/图像处理/">图像处理</a>
+        <a class="article-category-link" href="/categories/算法和数据结构/">算法和数据结构</a>
     </div>
 
-                    
-                </div>
-            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h1><ul>
+<li>用于单调函数求最值</li>
+<li><p>有两个中间变量m1,m2</p>
+<h1 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h1><p>Let a unimodal function <code>f(x)</code> on some interval <code>[l; r]</code>. Take any two points <code>m1</code> and <code>m2</code> in this segment: <code>l &lt; m1 &lt; m2 &lt; r</code>. Then there are three possibilities:</p>
+</li>
+<li><p>if <code>f(m1) &lt; f(m2)</code>, then the required maximum can not be located on the <code>left side - [l; m1]</code>. It means that the maximum further makes sense to look only in the interval <code>[m1;r]</code></p>
+</li>
+<li><p>if <code>f(m1) &gt; f(m2)</code>, that the situation is similar to the previous, up to symmetry. Now, the required maximum can not be in the <code>right side - [m2; r]</code>, so go to the segment <code>[l; m2]</code></p>
+</li>
+<li><p>if <code>f(m1) = f(m2)</code>, then the search should be conducted in <code>[m1; m2]</code>, but this case can be attributed to any of the previous two (in order to simplify the code). Sooner or later the length of the segment will be a little less than a predetermined constant, and the process can be stopped.</p>
+</li>
+</ul>
+<p>choice points <code>m1</code> and <code>m2</code>:</p>
+<ul>
+<li><p><code>m1 = l + (r-l)/3</code></p>
+</li>
+<li><p><code>m2 = r - (r-l)/3</code></p>
+</li>
+</ul>
+<h1 id="Run-time-order"><a href="#Run-time-order" class="headerlink" title="Run time order"></a>Run time order</h1><p>$$T(n)=T(2n/3)+1=\theta (\log{n})$$</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><h5 id="R-ecursive-algorithm"><a href="#R-ecursive-algorithm" class="headerlink" title="R ecursive algorithm"></a>R ecursive algorithm</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def ternarySearch(f, left, right, absolutePrecision):</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    left and right are the current bounds; </div><div class="line">    the maximum is between them</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    if abs(right - left) &lt; absolutePrecision:</div><div class="line">        return (left + right)/2</div><div class="line"></div><div class="line">    leftThird = (2*left + right)/3</div><div class="line">    rightThird = (left + 2*right)/3</div><div class="line"></div><div class="line">    if f(leftThird) &lt; f(rightThird):</div><div class="line">        return ternarySearch(f, leftThird, right, absolutePrecision) </div><div class="line">    else:</div><div class="line">        return ternarySearch(f, left, rightThird, absolutePrecision)</div></pre></td></tr></table></figure>
+<h5 id="Iterative-algorithm"><a href="#Iterative-algorithm" class="headerlink" title="Iterative algorithm"></a>Iterative algorithm</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">def ternarySearch(f, left, right, absolutePrecision):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    Find maximum of unimodal function f() within [left, right]</div><div class="line">    To find the minimum, reverse the if/else statement or reverse the comparison.</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    while True:</div><div class="line">        #left and right are the current bounds; the maximum is between them</div><div class="line">        if abs(right - left) &lt; absolutePrecision:</div><div class="line">            return (left + right)/2</div><div class="line"></div><div class="line">        leftThird = left + (right - left)/3</div><div class="line">        rightThird = right - (right - left)/3</div><div class="line"></div><div class="line">        if f(leftThird) &lt; f(rightThird):</div><div class="line">            left = leftThird</div><div class="line">        else:</div><div class="line">            right = rightThird</div></pre></td></tr></table></figure>
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://yoursite.com/2017/11/02/alg_3/" data-id="cj9i7rg040000vcrd3hnlv89x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/11/02/alg_pack/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">背包问题</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
 </section>
             
                 
